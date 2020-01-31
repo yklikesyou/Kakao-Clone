@@ -48,7 +48,7 @@
 }
 
 .chat__write-column input:focus {
-  /* 타자칠때 outline 생기는 거*/
+  /* 타자칠때 outline 생기는 거군*/
   outline: none;
 }
 
