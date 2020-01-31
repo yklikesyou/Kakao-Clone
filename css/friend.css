@@ -1,0 +1,85 @@
+/*
+friend , friends class가 여러개 있어서 헷갈렸는데, 
+결국 필요한 얘들끼리 묶여있는 거였어 같은 class로 
+*/
+
+.friend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.friend__avatar {
+  width: 50px;
+  border-radius: 37%;
+}
+
+/* .friend.blabla -> 동시 적용일때는 . 뒤에 바로 붙여서 써줘야함 .을 띄어쓰면 안에 속해있다는 의미 */
+
+.g-avatar {
+  width: 70px;
+}
+
+.m-avatar {
+  width: 60px;
+}
+
+.friend__column {
+  display: flex; /* 사진 없애 텍스트 오게하려구 */
+  align-items: center; /* align-items는 stretch가 디폴트라서 바꿔줘야함 */
+}
+
+.friend .friend__avatar {
+  /* friend__avatar class가 어디에 속해있는지 알기쉽게 위해 .friend 앞에 써주는 것 */
+  margin-right: 15px;
+}
+
+.friend__content .friend__name {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.friend__content .friend__status, /* 얘는 friend화면 */
+.friend__content .friend__bottom-text,
+.friend .chat__timestamp {
+  /* 얘는 chat화면 */
+  opacity: 0.6;
+}
+.friend__content .friend__status {
+  font-size: 12px;
+}
+.friend__content .friend__bottom-text,
+.friend .chat__timestamp {
+  font-size: 14px;
+}
+
+.friend .friend__now-listening {
+  border: 1.5px solid #52e084;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  /* 여기서 그냥 opacity하면 이 전체 박스도 흐려지니까 text만 흐리게 하려면 아래처럼 span에만 */
+}
+
+.friend__now-listening span {
+  opacity: 0.7;
+}
+
+.friend__now-listening i {
+  color: #5aad77;
+  font-size: 12px;
+}
+
+.friend__add-btn {
+  display: flex;
+  padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+/* 이거 class이름 헷갈려서 실험해봤음. 그냥 class에 해당 단어가 있으면 다 해당되는 것.
+.friend__name{  
+    color: green;
+    font-size: 100px;
+} */

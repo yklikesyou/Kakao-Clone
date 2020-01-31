@@ -1,0 +1,84 @@
+<!-- 그냥 html쓰고 :5 누르면 자동완성 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- fontawesome link ___Free icon 쓰는 것 기억하자-->
+    <script
+      src="https://kit.fontawesome.com/a2d24c0aff.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Settings | Kakao Clone</title>
+  </head>
+  <body>
+    <div class="status-bar">
+      <div class="status-bar__column">
+        <span class="status-bar__clock">13:54</span>
+      </div>
+      <div class="status-bar__column">
+        <i class="fas fa-clock"></i>
+        <i class="fas fa-volume-mute"></i>
+        <i class="fas fa-wifi"></i>
+        <span class="status-bar__battery-level">100%</span>
+        <i class="fas fa-battery-full"></i>
+        <!-- 위에서 battery-level 의 -는 word를 나누기 위해 사용. 
+        status-bar__battery-level에서의 __은 부모 자식을 나누기 위해 사용 -->
+      </div>
+    </div>
+    <header class="header">
+      <div class="header__header-column">
+        <!-- <div class="header_back-btn"> 해도 되고, 아래처럼 href에 그냥 class로 써놔줘도 ㄱㅊ-->
+        <a href="more.html" class="header__back-btn">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="header__title">Settings</h1>
+      </div>
+      <div class="header__header-column">
+        <span class="header__icon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+    </header>
+    <main class="settings">
+      <section class="settings__sections">
+        <!--위에 세개가 section처럼 있기 때문-->
+        <ul class="settings__list">
+          <li class="settings__setting">
+            <span class="settings__icon"> <i class="fas fa-lock"></i></span
+            ><span class="settings__title">Privacy</span>
+          </li>
+          <li class="settings__setting">
+            <span class="settings__icon"> <i class="far fa-bell"></i></span
+            ><span class="settings__title">Notifications</span>
+          </li>
+          <li class="settings__setting">
+            <span class="settings__icon"><i class="far fa-user"></i></span
+            ><span class="settings__title">Friends</span>
+          </li>
+      </section>
+      <section class="settings__sections">
+      </ul>
+      <ul class="settings__list">
+        <li class="settings__setting">
+          <span class="settings__icon">
+            <i class="far fa-kiss-wink-heart"></i></span
+          ><span class="settings__title">Kakao</span>
+        </li>
+
+        <li class="settings__setting">
+          <span class="settings__icon">
+            <i class="far fa-hand-scissors"></i></span
+          ><span class="settings__title">I finally</span>
+        </li>
+        <li class="settings__setting">
+          <span class="settings__icon"><i class="far fa-heart"></i></span
+          ><span class="settings__title">made it</span>
+        </li>
+      </ul>
+      </section>
+    </main>
+  </body>
+</html>

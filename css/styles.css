@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap");
+/* 필요한 typography 가져올 수 있음 */
+@import "reset.css";
+@import "status-bar.css";
+@import "header.css";
+@import "nav-bar.css";
+@import "friend.css";
+@import "friends.css";
+@import "find.css";
+@import "more.css";
+@import "settings.css";
+@import "chat.css";
+
+* {
+  /* 모두라는 표시 */
+  box-sizing: border-box;
+  /* padding추가할때 그만큼 box size 크게 만들지 말아줘. 라는 뜻
+   -> box에 padding을 여기저기에 막 붙이면, 처음에 정한 size에 계속해서 +되는 거니까*/
+}
+
+body {
+  background-color: white;
+  padding: 10px 20px;
+  color: #020202; /* font color를 colorzilla 에서 선택해서 적음. 그냥 검은색 ㄴㄴ*/
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; /* Open Sans 있으면 저거 쓰고 ~ 아니면 그 뒤에 것들*/
+}
+a {
+  color: inherit; /* 부모요소와 같은 색깔을 쓴다 */
+  text-decoration: none; /* 밑줄같은거 없애기 */
+}

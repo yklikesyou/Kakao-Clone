@@ -1,0 +1,16 @@
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  /* 이제 이해가 되네 이렇게 space-between으로 떨어뜨려놔야하니까 column 을 두개로 만들어서 나눴던거네 */
+  margin-bottom: 30px; /* 이거도 그 page ruler로 측정하는 거야*/
+  opacity: 0.8; /* 색의 80%만 보여준다는 것 */
+}
+
+.status-bar i {
+  font-size: 14px;
+}
+
+.status-bar__battery-level {
+  /* 이렇게 따로 빼서 언급할 수 있다는 것 */
+  margin-left: 5px;
+}

@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px; /* header이랑 그 아래 content 사이에 빈공간 */
+  align-items: center; /* 살짝 중앙으로 */
+}
+.header__title {
+  font-size: 24px;
+  font-weight: 600;
+  /* 이 600이라는 숫자는 그 구글폰트에서 가져온 것 styles.css첫줄 참고 */
+}
+.header__icon {
+  font-size: 20px;
+  margin-left: 25px; /* 아이콘들 사이 떨어뜨리기 */
+  cursor: pointer; /* 아이콘에 대면 커서가 포인터모양으로 바뀜*/
+}
+
+.header__header-column {
+  /* 이거는 화살표 있으면 거기 오른쪽으로 Best Friends 이런 글자를 옮기기 위함*/
+  display: flex;
+  align-items: center;
+}
+.header__back-btn {
+  /* setting요소에서 header_back-btn 이렇게 되어있어서 계속 호환안됐음. 확인 잘하기 */
+  font-size: 20px;
+  margin-right: 10px;
+  color: palevioletred;
+}
