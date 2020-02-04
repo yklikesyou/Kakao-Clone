@@ -10,6 +10,7 @@
 @import "more.css";
 @import "settings.css";
 @import "chat.css";
+@import "mobile.css";
 
 * {
   /* 모두라는 표시 */
@@ -28,4 +29,21 @@ body {
 a {
   color: inherit; /* 부모요소와 같은 색깔을 쓴다 */
   text-decoration: none; /* 밑줄같은거 없애기 */
+}
+
+/* 모든 페이지가 slide-up됨 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    /* transform: translateY(20px)에서 숫자 -20px이렇게 -는 위에서 아래이고
+                                          20px는 아래에서 위*/
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+main {
+  animation: fadeIn 0.5s ease-in-out;
 }

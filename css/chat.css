@@ -1,55 +1,102 @@
+.header-wrapper {
+  position: fixed;
+  z-index: 2;
+  /* 메세지들이 header wrapper 위에 막 떠있었는데 이건 layer순서인 z-index 확인해주면 됨*/
+  top: 0px;
+  width: 100%;
+  background-color: white;
+  padding: 5px 0px;
+  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.3),
+    0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
 .chats-body {
   /* background 적용을 위해 */
-  padding: 0;
+  padding: 5px 0px;
+  padding-top: 100px; /*headerwrapper부분 측정해서 그만큼 내린것*/
 }
 .chats-body .header,
 .chats-body .status-bar {
   padding: 0px 20px; /* 얘네 padding은 다시 적용해줌 */
 }
-.chat-screen {
+.chats-body {
   background-image: url("../images/chatBg.png");
   /* url(여기에 ..이게 의미하는 거는) outside of chat.css 라는 것 */
-  min-height: 100vh;
+  min-height: 1000vh;
   /* chat class가 적용된 div에 viewport(=screen)의 100%의 높이를 주는 것*/
 }
-.chat__write {
+.chat__write-container {
   position: fixed;
-  bottom: 50px;
-  width: 80%;
+  bottom: 0px;
   margin: 0 auto; /* margin: 0 auto, left, right:0 이 방법이 */
   left: 0; /* 완전히 가운데 정렬하는 방법임  */
   right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fcfcfc;
-  padding: 0px 20px;
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0 13px 27px -12px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  50% {
+    box-shadow: 0 13px 27px -60px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  100% {
+    box-shadow: 0 13px 27px -12px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+}
+
+.chat__write {
+  margin: 0 auto; /* margin 을 animate할 수는 없기 때문에 여기에 둬야함 write: focus가 아니라*/
+  bottom: 0px;
+  width: 100%;
+  border-radius: 0;
+  padding: 20px 60px;
+  border: none;
+  font-size: 14px;
+  transition: width 0.5s ease-in-out, border-radius 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+}
+.chat__icon-left {
+  position: absolute;
+  left: 10px;
+}
+.chat__icon-right {
+  position: absolute;
+  right: 10px;
+}
+
+.chat__write:focus {
+  /* 타자칠때 outline 생기는 거군*/
+  outline: none;
+  width: 80%;
+  transform: translateY(-70px);
   border-radius: 40px;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   /* box-shadow: 수평값 수직값 blur값 / rgba의 마지막값은 opacity
    stripe라는 사이트에서 box-shadow값 복붙했음. 이런식으로 괜찮은사이트꺼에서 아이디어 얻는것도 좋아 */
+  animation: float 3s linear infinite forwards;
 }
-
-.chat__write i {
-  font-size: 22px;
+.chat__icon {
+  font-size: 18px;
+  transition: opacity 0.5s ease-in-out;
+}
+.chat__write:focus ~ .chat__icon {
+  /* chat__write(=input)다음에 있는 sibling을 선택하는 거야 . 그 전꺼는 X 
+   html은 위에서 아래로 읽기때문에, 해당 content아래에 있는것만 선택할 수 있는 거임. */
+  opacity: 0;
+  /* opacity 0 대신에,
+   display: none 해도 되는데 opacity를 이용해서 transition을 만들거라서 */
 }
 
 .chat__write-column:nth-child(2) {
   /* column 총 3개인데 그중에 두번째꺼 언급하는 것 */
-  width: 100%;
-}
-
-.chat__write-column input {
-  padding: 20px 10px;
-  width: 100%;
-  border: none;
-  font-size: 14px;
-}
-
-.chat__write-column input:focus {
-  /* 타자칠때 outline 생기는 거군*/
-  outline: none;
+  width: 80%;
 }
 
 .chat-screen .chat__messages {
@@ -57,6 +104,7 @@
   display: flex; /*여기서 가로로했다가*/
   flex-direction: column; /*다시 세로로 되는거고*/
   align-items: center; /*가운데*/
+  justify-content: center;
   padding: 0px 20px;
   padding-top: 30px;
 } /* element들을 가운데로 정렬하기위해. 
@@ -79,16 +127,27 @@
   display: flex;
   align-items: flex-start;
   /* align-items: center; 이거는 수직 가운데정렬이라는 의미*/
-  width: 50%; /* 화면의 50%가 메세지 */
-  margin-bottom: 20px;
+  /* width: 50% 화면의 50%가 메세지라는 건데 이거 하고나서 이상함 왜일까 */
+  margin-bottom: 25px;
 }
-.message .message__content {
+/* .message .message__content {
   width: 100%;
+} */
+@keyframes spin {
+  from {
+    transform: none;
+  }
+  to {
+    transform: rotateY(
+      1turn
+    ); /* rotateX rotateY 차이는 X축기준으로 보면 위아래니까 위아래로 rotate 된다는 뜻*/
+  }
 }
 .incoming-message img {
   width: 40px;
   border-radius: 15px;
   margin-right: 15px;
+  /* animation: spin 1s linear infinite; 이상해서 뻈음 */
 }
 
 .incoming-message {
@@ -96,8 +155,10 @@
 }
 
 .sent-message {
-  align-self: flex-end;
-  text-align: end; /* 요고 몰라서 힘들었음 text 정렬 */
+  align-self: flex-end; /* 박스를 끝으로 보내고 */
+  text-align: end; /* 박스 안에서 text를 끝으로 보내고 */
+  /* 요고 몰라서 엄청오래 걸렸음 ****************************** text 정렬 
+  text align -  aligning the inner content of a block content */
 }
 
 .message .message__bubble {
@@ -107,11 +168,13 @@
     rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
   padding: 10px 20px;
   border-radius: 30px;
+  display: block; /* span이 text라서 margin이런거 하기 어려웠는데 이걸 하면   
+                      이제 box로 인식하게됨 */
 }
 
 .incoming-message .message__author {
   display: block; /* 일단은 얘가 block 상태여야 margin을 줄 수 있으니까 */
-  margin-bottom: 20px; /* 이거 바로 했는데 안먹히면 일단 display상태 확인하기 */
+  margin-bottom: 10px; /* 이거 바로 했는데 안먹히면 일단 display상태 확인하기 */
   font-weight: 600;
   font-size: 12px;
 }
@@ -119,7 +182,41 @@
 /*아래 두개는 양쪽 말하는 bubble 끝부분 각각 둥근거 없애려는거*/
 .incoming-message .message__bubble {
   border-bottom-left-radius: 0px;
+  background-image: linear-gradient(
+    to right,
+    /* 디폴트는 그냥 위에서 아래로 */ #ee9ca7,
+    #ffdde1
+  ); /* uigradient.com */
 }
 .sent-message .message__bubble {
   border-bottom-right-radius: 0px;
+  background-image: linear-gradient(to right, #ffefba, #ffffff);
+}
+
+@keyframes incomingAnim {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.incoming-message {
+  animation: incomingAnim 0.7s ease-out forwards;
+}
+@keyframes sentAnim {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sent-message {
+  animation: sentAnim 0.7s ease-out forwards;
 }
